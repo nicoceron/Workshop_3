@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Workshop_3</string>
+
+    <string name="auth_failed">Authentication failed.</string>
+
+
 </resources>

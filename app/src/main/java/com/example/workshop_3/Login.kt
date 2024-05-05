@@ -18,8 +18,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 
 class Login : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -31,6 +33,17 @@ class Login : AppCompatActivity() {
             insets
         }
         auth = FirebaseAuth.getInstance()
+        binding.signIn.setOnClickListener {
+            val email = binding.email.text.toString().trim()
+            val password = binding.password.text.toString().trim()
+            if (validateForm(email, password)) {
+                signIn(email, password)
+            }
+        }
+
+        binding.register.setOnClickListener {
+            startActivity(Intent(this, SignUp::class.java))
+        }
     }
 
     override fun onStart() {
@@ -47,7 +60,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun signIn(email: String, password: String) {
-        if (isValidEmail(email) && password != null) {
+        if (isValidEmail(email)) {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
                     updateUI(auth.currentUser)
@@ -83,5 +96,6 @@ class Login : AppCompatActivity() {
         val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
         return email.matches(emailRegex.toRegex())
     }
+
 
 }

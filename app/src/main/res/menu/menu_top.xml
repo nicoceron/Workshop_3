@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/toggleAvailability"
+        android:icon="@drawable/check_circle_24px"
+        android:title="Availability"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout_24px"
+        android:title="Logout"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/findUsers"
+        android:icon="@drawable/baseline_location_searching_24"
+        android:title="Find Users"
+        app:showAsAction="ifRoom" />
+</menu>
